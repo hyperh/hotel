@@ -1,12 +1,24 @@
 # hotel [![Mac/Linux Build Status](https://img.shields.io/travis/typicode/hotel/master.svg?label=Mac%20OSX%20%26%20Linux)](https://travis-ci.org/typicode/hotel) [![Windows Build status](https://img.shields.io/appveyor/ci/typicode/hotel/master.svg?label=Windows)](https://ci.appveyor.com/project/typicode/hotel/branch/master) [![](https://badge.fury.io/js/hotel.svg)](https://www.npmjs.com/package/hotel)
 
-> Get local domains in seconds!
+> Start apps from your browser and get local domains in seconds!
 
 ![](http://i.imgur.com/DrLjbIi.gif)
 
-It works everywhere (OS X, Linux, Windows) with any server (Node, Go, Rails, PHP, ...).
+_Tip: if you don't enable local domains, hotel can still be used as a **catalog of local servers**._
 
-_Tip: if you don't enable local domains, hotel can still be used as a catalog of local servers._
+Hotel works great on any OS (OS X, Linux, Windows) and with __all servers :heart:__ 
+* Node (Express, Webpack)
+* PHP (Laravel, Symfony)
+* Ruby (Rails, Sinatra, Jekyll)
+* Python (Django)
+* Docker
+* Go
+* Apache, Nginx
+* ...
+
+## Video
+
+* [Starting apps with Hotel - Spacedojo Code Kata by Josh Owens](https://www.youtube.com/watch?v=BHW4tzctQ0k)
 
 ## Features
 
@@ -22,8 +34,6 @@ _Tip: if you don't enable local domains, hotel can still be used as a catalog of
 * Plays nice with other servers (Apache, Nginx, ...)
 * Random or fixed ports
 
-_* Local `.dev` domains are optional. To use them, configure your network or browser to use hotel's proxy auto-config file (`proxy.pac`). See instructions [here](https://github.com/typicode/hotel/blob/master/docs/README.md)._
-
 ## Install
 
 ```bash
@@ -33,6 +43,12 @@ npm install -g hotel && hotel start
 If you don't have Node installed, use [brew](http://brew.sh) `brew install node`, [nvm](https://github.com/creationix/nvm) `nvm install stable` or go to [nodejs.org](https://nodejs.org).
 
 ## Quick start
+
+### Local dev domains (optional)
+
+To use local `.dev` domains, you need to configure your network or browser to use hotel's proxy auto-config file or you can skip this step for the moment and go directly to http://localhost:2000
+
+[__See instructions here__](https://github.com/typicode/hotel/blob/master/docs/README.md).
 
 ### Servers
 
@@ -62,10 +78,13 @@ https://one.dev
 https://two.dev
 ```
 
+#### Popular servers examples
+
 Using other servers? Here are some examples to get you started :)
 
 ```bash
-hotel add 'jekyll --port $PORT'
+hotel add 'ember server'
+hotel add 'jekyll serve --port $PORT'
 hotel add 'rails server -p $PORT -b 127.0.0.1'
 hotel add 'python -m SimpleHTTPServer $PORT'
 hotel add 'php -S 127.0.0.1:$PORT'
@@ -130,10 +149,6 @@ server.listen(port)
 hotel add 'cmd -p $PORT'  # OS X, Linux
 hotel add "cmd -p %PORT%" # Windows
 ```
-
-## Dev domain support
-
-See instructions [here](https://github.com/typicode/hotel/blob/master/docs/README.md).
 
 ## Fallback URL
 

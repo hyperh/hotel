@@ -1,5 +1,42 @@
 # Change Log
 
+## Unreleased
+
+* Add dark theme
+* Update `x-forward-port` header
+* Improve `ember-cli` and `livereload` support
+
+## 0.5.11
+
+* Add more `x-forward` headers
+
+## 0.5.10
+
+* Pass `HTTP_PROXY` env to servers started by hotel
+
+## 0.5.9
+
+* UI bug fix
+
+## 0.5.8
+
+* Add `favicon`
+* Fix Safari and IE bug
+
+## 0.5.6
+
+* Fix Safari bug
+
+## 0.5.5
+
+* Add `X-Forwarded-Proto` header for ssl proxy
+* Support an array of environment variables for the CLI option `--env`
+* UI enhancements
+
+## 0.5.4
+
+* Fix Node 0.12 issue
+
 ## 0.5.3
 
 * UI tweaks

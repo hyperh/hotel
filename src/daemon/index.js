@@ -24,6 +24,7 @@ exitHook(() => {
   console.log('Stop daemon')
   proxy.close()
   app.close()
+  group.stopAll()
 
   console.log('Remove pid file')
   pidFile.remove()
@@ -39,18 +40,8 @@ const proxy = httpProxy.createServer({
     key: fs.readFileSync(path.join(__dirname, 'certs/server.key')),
     cert: fs.readFileSync(path.join(__dirname, 'certs/server.crt'))
   },
-  ws: true
-})
-
-// See https://github.com/typicode/hotel/pull/61
-proxy.on('proxyReq', (proxyReq, req) => {
-  req._proxyReq = proxyReq
-})
-
-proxy.on('error', (err, req) => {
-  if (req.socket.destroyed && err.code === 'ECONNRESET') {
-    req._proxyReq.abort()
-  }
+  ws: true,
+  xfwd: true
 })
 
 // Start HTTPS proxy and HTTP server

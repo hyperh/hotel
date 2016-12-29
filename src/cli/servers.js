@@ -61,8 +61,13 @@ function add (param, opts = {}) {
     conf.env.PATH = process.env.PATH
 
     // Copy other env option
-    if (opts.e && process.env[opts.e]) {
-      conf.env[opts.e] = process.env[opts.e]
+    if (opts.e) {
+      opts.e.forEach((key) => {
+        const value = process.env[key]
+        if (value) {
+          conf.env[key] = value
+        }
+      })
     }
 
     // Copy port option
@@ -85,6 +90,10 @@ function add (param, opts = {}) {
     console.log(`Output ${logFile}`)
   } else {
     console.log('Output No log file specified (use \'-o app.log\')')
+  }
+
+  if (!opts.p) {
+    console.log('Port Random port (use \'-p 1337\' to set a fixed port)')
   }
 }
 
@@ -112,9 +121,9 @@ function ls () {
       const serverFile = getServerFile(id)
       const server = JSON.parse(fs.readFileSync(serverFile))
       if (server.cmd) {
-        return `${id}\n  ${chalk.gray(tildify(server.cwd))}\n  ${chalk.gray(server.cmd)}`
+        return `${id}\n${chalk.gray(tildify(server.cwd))}\n${chalk.gray(server.cmd)}`
       } else {
-        return `${id}\n  ${chalk.gray(server.target)}`
+        return `${id}\n${chalk.gray(server.target)}`
       }
     })
     .join('\n\n')
